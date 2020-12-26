@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Hello Vue</title>
+	</head>
+	
+	<body>
+		<div id="app">
+			<h1>{{message}}</h1>
+		</div>
+		
+		<div id="author">
+			<span>{{name}}</span>
+		</div>
+		
+		<div id="comment">
+			<input style="margin-top: 15px;" type="text" v-model="content"/>
+			<div style="margin-top: 15px;">
+				<span>Dynamic Span Comment: </span>
+				<span>{{content}}</span>
+			</div>
+		</div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el : "#app",
+				data : {
+					message : "Hello VueJs"
+				}
+			});
+			
+			var author = new Vue({
+				el : "#author",
+				data : {
+					name : "Sadegh Bagherzadeh"
+				},
+			})
+			
+			var comment = new Vue({
+				el : "#comment",
+				data : {
+					content: "Caption"
+				}
+			});
+		</script>
+	</body>
+</html>
