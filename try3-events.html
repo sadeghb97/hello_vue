@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <title>Vuejs Events</title>
+    </head>
+
+    <body>
+
+        <div style="font-size: 24px;" id="app">
+            <div v-for="(game, index) in games" v-on:click="click(index)" v-bind:style="{marginTop: 4 + 'px', backgroundColor: game.status > 0 ? 'green' : 'red'}">
+                <span>{{game.title}}</span>
+                <span> --- </span>
+                <span>{{game.rate}}</span>
+            </div>
+
+            <input style="margin-top: 8px;" type="text" v-on:keyup.enter="addGame()" v-model="newGame" />
+        </div>
+
+        <!-- handle kardane event ba js kham -->
+        <div style="font-size: 25px; margin-top: 20px;" id="divNumber">
+            <span>Value: </span><span id="spanNumber">0</span>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" ></script>
+
+        <script type="text/javascript">
+            var num = 0;
+            var divNumber = document.getElementById("divNumber");
+            divNumber.addEventListener('click', function(){
+                num++;
+                document.getElementById("spanNumber").innerHTML = num;
+            });
+
+            var app = new Vue({
+                el : "#app",
+                data : {
+                    newGame : "",
+                    games : [
+                        {
+                            title: "Red dead redemption 2",
+                            rate: "97",
+                            status: "0"
+                        },
+                        {
+                            title: "Grand Theft Auto V",
+                            rate: "97",
+                            status: "1"
+                        },
+                        {
+                            title: "Persona 5 Royal",
+                            rate: "95",
+                            status: "0"
+                        },
+                        {
+                            title: "The last of us Remastered",
+                            rate: "95",
+                            status: "1"
+                        }
+                    ]
+                },
+                methods : {
+                    click : function(index){
+                        this.games[index].status = this.games[index].status > 0 ? 0 : 1;
+                    },
+                    addGame : function(){
+                        if(this.newGame == "") return;
+
+                        this.games.push({
+                            title: this.newGame,
+                            rate: "90",
+                            status: "0"
+                        });
+
+                        this.newGame = "";
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
