@@ -25,7 +25,51 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" ></script>
-    
+
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data : {
+                    imgStyle : {
+                        width: 80 + 'px',
+                        height: "auto"
+                    },
+                    games : [
+                        {
+                            title: "Red dead redemption 2",
+                            image: "img/rdr2.jpg",
+                            status: false
+                        },
+                        {
+                            title: "Grand Theft Auto V",
+                            image: "img/gtav.jpg",
+                            status: true
+                        },
+                        {
+                            title: "Persona 5 Royal",
+                            image: "img/p5r.jpg",
+                            status: false
+                        },
+                        {
+                            title: "The last of us Remastered",
+                            image: "img/tlour.jpg",
+                            status: true
+                        }
+                    ]
+                },
+                methods : {
+                    gameDescription : function(index){
+                        return this.games[index].title + " ---> " + this.games[index].status;
+                    }
+                },
+                //computed ha parametr nemigirand agar be parametr niaz bashad az method estefade mikonim
+                computed : {
+                    gamesDesc : function(){
+                        return "Number of games: " +  this.games.length;
+                    }
+                }
+            });
+            
         </script>
     </body>
 </html>
