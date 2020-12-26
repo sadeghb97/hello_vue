@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Vue Lists</title>
+	</head>
+	
+	<body>
+		<h1>Vue Lists</h1>
+		<div id="app">
+			<div style="margin-top: 20px;" v-for="c in colors">
+				<span>{{c.color}}</span>
+				<span v-bind:style="{ color: c.value, backgroundColor: c.bg, fontSize: 30 + 'px' }">{{c.value}}</span>
+			</div>
+		</div>
+		
+		<div style="margin-top: 60px;" id="box">
+			<input type="text" v-model="color"/>
+			<div v-bind:style="{ color: color , marginTop: 8 + 'px', fontSize: 26 + 'px', fontWeight: 'bold' }">Your Color</div>
+		</div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el : "#app",
+				data : {
+					colors : [
+						{
+							color: "red",
+							value: "#f00",
+							bg: "#000"
+						},
+						{
+							color: "green",
+							value: "#0f0",
+							bg: "#000"
+						},
+						{
+							color: "blue",
+							value: "#00f",
+							bg: "#eee"
+						},
+						{
+							color: "cyan",
+							value: "#0ff",
+							bg: "#ddd"
+						},
+						{
+							color: "magenta",
+							value: "#f0f",
+							bg: "#000"
+						},
+						{
+							color: "yellow",
+							value: "#ff0",
+							bg: "#000"
+						},
+						{
+							color: "black",
+							value: "#000",
+							bg: "#bbb"
+						}
+					]
+				}
+			});
+			
+			var box = new Vue({
+				el : "#box",
+				data : {
+					color: "#F00"
+				}
+			});
+		</script>
+	</body>
+</html>
