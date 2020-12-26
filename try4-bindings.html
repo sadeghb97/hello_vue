@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <title>Vuejs Bindings</title>
+
+        <style>
+            .active {
+              border: 5px solid black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div v-for="game in games" v-bind:class="{ active : game.status}" v-bind:style="{marginTop: 4 + 'px', backgroundColor: game.status > 0 ? 'green' : 'red'}">
+                <img v-bind:src="game.image" v-bind:alt="game.title" v-bind:style="imgStyle"/>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" ></script>
+
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data : {
+                    imgStyle : {
+                        width: 150 + 'px',
+                        height: "auto"
+                    },
+                    games : [
+                        {
+                            title: "Red dead redemption 2",
+                            image: "img/rdr2.jpg",
+                            status: false
+                        },
+                        {
+                            title: "Grand Theft Auto V",
+                            image: "img/gtav.jpg",
+                            status: true
+                        },
+                        {
+                            title: "Persona 5 Royal",
+                            image: "img/p5r.jpg",
+                            status: false
+                        },
+                        {
+                            title: "The last of us Remastered",
+                            image: "img/tlour.jpg",
+                            status: true
+                        }
+                    ]
+                }
+            });
+            
+        </script>
+    </body>
+</html>
