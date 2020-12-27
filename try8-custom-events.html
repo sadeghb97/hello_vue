@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Vue Lists</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+	</head>
+	
+	<body>
+		<div id="app" class="container">
+			<div class="row">
+			<div class="col-lg-12">
+
+			<my-alert style="margin-top: 10px;" @close="closeAnAlert" v-for="alert in alerts" v-bind:title="alert.title" 
+				v-bind:message="alert.message" v-bind:type="alert.type"></my-alert>
+
+			<h2 style="margin-top: 30px;">Colors List</h2>
+			<color-box v-for="(c, index) in colors" v-bind:color="c" v-on:choose="chooseColor(index)"></color-box>
+
+			<h2 style="margin-top: 60px;" v-if="existColor">Chosen Colors</h2>
+			<div style="margin-top: 20px;" v-for="c in selectedColors">
+				<span>{{c.color}}</span>
+				<span v-bind:style="{ color: c.value, backgroundColor: c.bg, fontSize: 30 + 'px' }">{{c.value}}</span>
+			</div>
+
+			<div style="margin-top: 60px;">
+				<input v-on:keyup.enter="addColor" type="text" v-model="inputColor"/>
+				<div v-bind:style="{ color: inputColor , marginTop: 8 + 'px', fontSize: 30 + 'px', fontWeight: 'bold' }">Your Color</div>
+			</div>
+
+			</div>
+			</div>
+		</div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<!-- development version: mishe az extensione vue tuye broswer estefade kard. -->
+		<!-- noskhe production sabok tare va bayad tuye mahsule nahaei estefade beshe -->
+		
+		<script src="js/try8.js"></script>
+	</body>
+</html>
