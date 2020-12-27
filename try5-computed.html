@@ -13,6 +13,7 @@
 
     <body>
         <div id="app">
+            <!-- dar binde class  -->
             <div v-for="(game, index) in games" v-bind:class="{ active : game.status}" v-bind:style="{marginTop: 4 + 'px', backgroundColor: game.status > 0 ? 'green' : 'red'}">
                 <img v-bind:src="game.image" v-bind:alt="game.title" v-bind:style="imgStyle"/>
                 <span v-if="game.status" style="font-size: 25px;">Finished</span>
