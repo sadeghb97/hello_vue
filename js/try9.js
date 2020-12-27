@@ -1,3 +1,6 @@
+//yek instance az clase asli Vue migirim
+window.Event = new Vue();
+
 Vue.component('my-alert', {
     props: ['title', 'message', 'type'],
     data : function(){
@@ -24,10 +27,9 @@ Vue.component('my-alert', {
 });
 
 Vue.component('color-box', {
-    props: ['color'],
-    emits: ['choose'],
+    props: ['color', 'index'],
     template: `
-        <div style="margin-top: 20px;" v-on:click="handleClick()" 
+        <div style="margin-top: 20px;" v-on:click="handleClick(index)" 
         v-bind:style="{textDecoration: color.chosen ? 'line-through' : 'none'}">
 
         <span>{{color.color}}</span>
@@ -35,8 +37,9 @@ Vue.component('color-box', {
         </div>
     `,
     methods:{
-        handleClick : function(){
-            this.$emit("choose");
+        handleClick : function(index){
+            //ruydade choose-color az instance Event ke sakhtim ra seda mizanim
+            Event.$emit("choose-color", index)
         }
     }
 })
@@ -134,5 +137,18 @@ var app = new Vue({
         existAlert : function(){
             return this.alerts.length > 0;
         }
+    },
+    created: function(){
+        console.log("creating ...");
+
+        //listener choose az instance Event ke sakhtim ra tarif mikonim
+        //deghat shavad az yek instance digar be instance event dast peyda kardim va in kar ra mikonim
+        Event.$on('choose-color' , this.chooseColor);
+
+        //in code ham ham arze code balast
+        /*Event.$on('choose-color' , (index) => {
+            this.chooseColor(index);
+          });*/
+        console.log("created ...");
     }
 });

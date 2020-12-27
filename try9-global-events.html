@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf8">
-		<title>Vue Custom Events</title>
+		<title>Vue Global Events</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 	</head>
 	
@@ -16,7 +16,7 @@
 				v-bind:message="alert.message" v-bind:type="alert.type"></my-alert>
 
 			<h2 style="margin-top: 30px;">Colors List</h2>
-			<color-box v-for="(c, index) in colors" v-bind:color="c" v-on:choose="chooseColor(index)"></color-box>
+			<color-box v-for="(c, index) in colors" v-bind:color="c" v-bind:index="index"></color-box>
 
 			<h2 style="margin-top: 60px;" v-if="existColor">Chosen Colors</h2>
 			<div style="margin-top: 20px;" v-for="c in selectedColors">
@@ -37,6 +37,6 @@
 		<!-- development version: mishe az extensione vue tuye broswer estefade kard. -->
 		<!-- noskhe production sabok tare va bayad tuye mahsule nahaei estefade beshe -->
 		
-		<script src="js/try8.js"></script>
+		<script src="js/try9.js"></script>
 	</body>
 </html>
